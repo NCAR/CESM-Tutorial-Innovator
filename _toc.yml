@@ -6,18 +6,11 @@ root: README
 
 chapters:
 
-- file: notebooks/namelist/namelist
+- file: notebooks/RunningCESM.ipynb
+- file: notebooks/analyze-simulation.ipynb
   sections:
-  - file: notebooks/namelist/overview
-  - file: notebooks/namelist/documentation
-  - file: notebooks/namelist/output
-    sections:
-    - file: notebooks/namelist/output/output_cam
-    - file: notebooks/namelist/output/output_clm
-    - file: notebooks/namelist/output/output_cice
-    - file: notebooks/namelist/output/output_pop
-  - file: notebooks/namelist/exercises_overview
-    sections:
-    - file: notebooks/namelist/exercises/exercise_cam_output
-    - file: notebooks/namelist/exercises/exercise_tuning_parameter
-
+  - file: notebooks/plot_simulation_results.ipynb
+- file: notebooks/analyze-CESM2-LE.ipynb
+  sections:
+  - file: notebooks/plot_precipitation.ipynb
+  - file: notebooks/plot_temperature.ipynb

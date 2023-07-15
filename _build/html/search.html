@@ -112,14 +112,19 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="README.html">
-                    Welcome to the CESM Tutorial
+                    CESM Tutorial for MD
                 </a>
             </li>
         </ul>
         <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/RunningCESM.html">
+   Running CESM
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="notebooks/namelist/namelist.html">
-   Namelist Modifications
+  <a class="reference internal" href="notebooks/analyze-simulation.html">
+   Analyze simulation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -128,68 +133,31 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/namelist/overview.html">
-     Overview
+    <a class="reference internal" href="notebooks/plot_simulation_results.html">
+     Analyze simulation results
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="notebooks/analyze-CESM2-LE.html">
+   Analyze CESM2 LENS
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/plot_precipitation.html">
+     Plot Precipitation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/namelist/documentation.html">
-     Namelist Variables Documentation
+    <a class="reference internal" href="notebooks/plot_temperature.html">
+     Plot Temperature
     </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="notebooks/namelist/output.html">
-     Customizing Output
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="notebooks/namelist/output/output_cam.html">
-       Customize CAM output
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="notebooks/namelist/output/output_clm.html">
-       Customize CLM output
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="notebooks/namelist/output/output_cice.html">
-       Customize CICE output
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="notebooks/namelist/output/output_pop.html">
-       Customize POP output
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="notebooks/namelist/exercises_overview.html">
-     Exercise Overview
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-    <label for="toctree-checkbox-3">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="notebooks/namelist/exercises/exercise_cam_output.html">
-       Modify CAM output
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="notebooks/namelist/exercises/exercise_tuning_parameter.html">
-       Change a tuning parameter in CAM
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
