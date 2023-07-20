@@ -13,8 +13,8 @@ chapters:
 - file: notebooks/2.Running/RunningCESM.ipynb
 - file: notebooks/3.CESM2-LE/analyze-CESM2-LE.ipynb
   sections:
-  - file: notebooks/3.CESM2-LE/plot_precipitation.ipynb
   - file: notebooks/3.CESM2-LE/plot_temperature.ipynb
+  - file: notebooks/3.CESM2-LE/plot_precipitation.ipynb
 - file: notebooks/4.Innovator-ens/our_ensemble.ipynb
   sections:
   - file: notebooks/4.Innovator-ens/plot_simulation_results.ipynb
