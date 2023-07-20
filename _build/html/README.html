@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>CESM Tutorial for MD &#8212; CESM Tutorial</title>
+    <title>Climate Modeling Workshop &#8212; CESM Tutorial</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Running CESM" href="notebooks/RunningCESM.html" />
+    <link rel="next" title="Introduction" href="notebooks/1.Intro/introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -108,19 +108,14 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    CESM Tutorial for MD
+                    Climate Modeling Workshop
                 </a>
             </li>
         </ul>
         <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="notebooks/RunningCESM.html">
-   Running CESM
-  </a>
- </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="notebooks/analyze-simulation.html">
-   Analyze simulation
+  <a class="reference internal" href="notebooks/1.Intro/introduction.html">
+   Introduction
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -129,15 +124,25 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/plot_simulation_results.html">
-     Analyze simulation results
+    <a class="reference internal" href="notebooks/1.Intro/jupyter-nb.html">
+     Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/1.Intro/cloud.html">
+     The cloud
     </a>
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/2.Running/RunningCESM.html">
+   Running CESM
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="notebooks/analyze-CESM2-LE.html">
-   Analyze CESM2 LENS
+  <a class="reference internal" href="notebooks/3.CESM2-LE/analyze-CESM2-LE.html">
+   Analyze CESM2-LE
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -146,16 +151,38 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/plot_precipitation.html">
+    <a class="reference internal" href="notebooks/3.CESM2-LE/plot_precipitation.html">
      Plot Precipitation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/plot_temperature.html">
+    <a class="reference internal" href="notebooks/3.CESM2-LE/plot_temperature.html">
      Plot Temperature
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="notebooks/4.Innovator-ens/our_ensemble.html">
+   The innovator ensemble
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/4.Innovator-ens/plot_simulation_results.html">
+     Analyze innovator simulations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/5.Resources/for_organizers.html">
+   Resources for organizers
+  </a>
  </li>
 </ul>
 
@@ -226,7 +253,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/NCAR/CESM-Tutorial"
+        <a href="https://github.com/NCAR/CESM-Tutorial-Innovator"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -243,7 +270,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/NCAR/CESM-Tutorial/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/NCAR/CESM-Tutorial-Innovator/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -331,8 +358,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#temporary-link">
-   Temporary link
+  <a class="reference internal nav-link" href="#planning-committee">
+   Planning committee:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#purpose">
+   Purpose -
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#agenda-all-times-in-mdt-gmt-6">
+   Agenda - All times in MDT (GMT-6)
   </a>
  </li>
 </ul>
@@ -344,7 +381,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>CESM Tutorial for MD</h1>
+                <h1>Climate Modeling Workshop</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -355,8 +392,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#temporary-link">
-   Temporary link
+  <a class="reference internal nav-link" href="#planning-committee">
+   Planning committee:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#purpose">
+   Purpose -
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#agenda-all-times-in-mdt-gmt-6">
+   Agenda - All times in MDT (GMT-6)
   </a>
  </li>
 </ul>
@@ -369,16 +416,29 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="cesm-tutorial-for-md">
-<h1><a class="reference external" href="https://ncar.github.io/CESM-Tutorial-MD/README.html">CESM Tutorial for MD</a><a class="headerlink" href="#cesm-tutorial-for-md" title="Permalink to this headline">#</a></h1>
-<p>This is the material used for the Medical Doctor Tutorial in September 2022 (?).
-<br></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="climate-modeling-workshop">
+<h1><a class="reference external" href="https://ncar.github.io/CESM-Tutorial-Innovator/README.html">Climate Modeling Workshop</a><a class="headerlink" href="#climate-modeling-workshop" title="Permalink to this headline">#</a></h1>
+<p>Thursday August 3, 2023 (9:00-2:00 pm MT)</p>
+<p>FL1-2198-EOL-Atrium</p>
 <hr class="docutils" />
-<section id="temporary-link">
-<h2>Temporary link<a class="headerlink" href="#temporary-link" title="Permalink to this headline">#</a></h2>
-<p>We need to move the material to the NCAR github. Brian wants to organize all the community tutorial somewhere. In the mean time, this material is in Cecile’s repo.</p>
-<p>Link to material on <a class="reference external" href="https://cecilehannay.github.io/CESM-Tutorial-MD/README.html">Cecile’s github</a></p>
-<div>
+<p><img alt="young_innovator_logo" src="_images/young_innovator_logo.png" /></p>
+<hr class="docutils" />
+<section id="planning-committee">
+<h2>Planning committee:<a class="headerlink" href="#planning-committee" title="Permalink to this headline">#</a></h2>
+<p>Melissa Moulton, Cecile Hannay, Isla Simpson, Brian Dobbins &amp; Alexandra Ramos</p>
+</section>
+<section id="purpose">
+<h2>Purpose -<a class="headerlink" href="#purpose" title="Permalink to this headline">#</a></h2>
+<p>What is a climate model? What is it like to run a climate model using high performance computing resources? How are figures generated from the model output and how are the results interpreted? What is “forced” climate variability versus “internal” climate variability? What are the limitations and sources of uncertainty in climate models? If you’ve been asking yourself any of these questions, this is a great hands-on opportunity to demystify climate modeling. If you already know some about climate models, this is an opportunity to dig a little deeper. The workshop will include brief lectures, hands-on practice with the Community Earth System Model (CESM) Large Ensemble (LENS2) via Jupyter notebooks on the cloud, and Q&amp;A with climate, weather, and water scientists. No prior modeling or scientific computing/coding experience is required. Please bring a laptop with access to the internet and a web browser.</p>
+</section>
+<section id="agenda-all-times-in-mdt-gmt-6">
+<h2>Agenda - All times in MDT (GMT-6)<a class="headerlink" href="#agenda-all-times-in-mdt-gmt-6" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>9:00 - 9:10 am		Welcome and Overview</p></li>
+<li><p>9:10 - 12:00 pm		Workshop</p></li>
+<li><p>12:00 - 1:00 pm		Lunch</p></li>
+<li><p>1:00 - 2:00 pm		Workshop</p></li>
+</ul>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -411,10 +471,10 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="notebooks/RunningCESM.html" title="next page">
+    <a class='right-next' id="next-link" href="notebooks/1.Intro/introduction.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Running CESM</p>
+        <p class="prev-next-title">Introduction</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
