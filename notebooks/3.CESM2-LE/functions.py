@@ -334,7 +334,7 @@ def plot_prmap_ensemblemean(fig, obs, model, start_year_of_decade):
   
     ci = 0.05 ; cmax=0.5
 
-    if ((start_year_of_decade + 9) > np.max((obs.year.values))):
+    if ((start_year_of_decade + 9) > np.max(obs.time.values)):
         obsdat[:] = nan
     
  
