@@ -305,7 +305,10 @@ def plot_tmap_ensemblemean(fig, obs, model, start_year_of_decade):
     if ( (start_year_of_decade + 9) > np.max(obs.year.values) ) :
         obsdat[:] = nan
 
-
+    if ( (start_year_of_decade + 9) > np.max(model.year.values) ) :
+        obsdat[:] = nan
+        
+        
 
     ax = contourmap_bothcontinents_robinson_pos(fig, obsdat - obsbase,obsdat.lon,obsdat.lat,
         ci,-1*cmax,cmax,'Observations, '+str(start_year_of_decade)+'-'+str(start_year_of_decade + 9)+
