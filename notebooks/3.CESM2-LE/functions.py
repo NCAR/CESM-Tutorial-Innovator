@@ -12,6 +12,7 @@ import matplotlib.ticker as mticker
 from matplotlib.colors import ListedColormap ## used to create custom colormaps
 import matplotlib.colors as mcolors
 import matplotlib as mpl
+from math import nan
 
 def blue2red_cmap(n, nowhite = False):
     """ combine two existing color maps to create a diverging color map with white in the middle
@@ -293,12 +294,19 @@ def plot_tmap_ensemblemean(fig, obs, model, start_year_of_decade):
     elif ((start_year_of_decade >= 2060) & (start_year_of_decade < 2100)):
         ci = 1 ; cmax=10
 
+
+        
     obsdat = obs.sel(year=slice(start_year_of_decade, start_year_of_decade+9)).mean('year')
     modeldat = model.sel(year=slice(start_year_of_decade, start_year_of_decade+9)).mean(['year','M'])
 
     obsbase = obs.sel(year=slice(1980,1989)).mean('year')
     modelbase = model.sel(year=slice(1980,1989)).mean(['year','M'])
    
+    if ( (start_year_of_decade + 9) > np.max(obs.year.values) ) :
+        obsdat[:] = nan
+
+
+
     ax = contourmap_bothcontinents_robinson_pos(fig, obsdat - obsbase,obsdat.lon,obsdat.lat,
         ci,-1*cmax,cmax,'Observations, '+str(start_year_of_decade)+'-'+str(start_year_of_decade + 9)+
          ' $-$ 1980-1989',0.05,0.45,0.75,0.97)
