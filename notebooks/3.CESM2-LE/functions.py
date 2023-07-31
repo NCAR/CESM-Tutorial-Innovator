@@ -334,6 +334,9 @@ def plot_prmap_ensemblemean(fig, obs, model, start_year_of_decade):
   
     ci = 0.05 ; cmax=0.5
 
+    if ((start_year_of_decade + 9) > np.max((obs.year.values))):
+        obsdat[:] = nan
+    
  
     ax = contourmap_northamerica_fill_pos(fig, obsdat - obsbase,obsdat.lon,obsdat.lat,
         ci,-1*cmax,cmax,'Obs, '+str(start_year_of_decade)+'-'+str(start_year_of_decade + 9)+
