@@ -332,7 +332,13 @@ def plot_prmap_ensemblemean(fig, obs, model, start_year_of_decade):
     obsbase = obs.sel(time=slice(1980,1989)).mean('time')
     modelbase = model.sel(time=slice(1980,1989)).mean(['time','M'])
   
-    ci = 0.05 ; cmax=0.5
+    if (start_year_of_decade < 2030): 
+        ci = 0.1 ; cmax=1
+    elif ((start_year_of_decade >= 2030) & (start_year_of_decade < 2060)):
+        ci = 0.1 ; cmax=1
+    elif ((start_year_of_decade >= 2060) & (start_year_of_decade < 2100)):
+        ci = 0.1 ; cmax=1
+    
 
     if ((start_year_of_decade + 9) > np.max(obs.time.values)):
         obsdat[:] = nan
