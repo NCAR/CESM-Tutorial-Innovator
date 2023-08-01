@@ -18,8 +18,8 @@ What is a climate model? What is it like to run a climate model using high perfo
 
 All times in MDT (GMT-6)
 
-- 9:00 - 9:10 am		Welcome and Overview				
-- 9:10 - 12:00 pm		Workshop
-- 12:00 - 1:00 pm		Lunch
-- 1:00 - 2:00 pm		Workshop 	
+- 8:30 - 8:40 am		Welcome and Overview				
+- 8:40 - 10:00 am		Lecture and workshop (hands-on)
+- 10:00 - 10:30 am		Break
+- 10:30 - 12:30 am		Workshop (hands-on) and Q&A 	
 
