@@ -11,6 +11,7 @@ chapters:
   - file: notebooks/1.Intro/cloud.ipynb
   - file: notebooks/1.Intro/jupyter-nb.ipynb
 - file: notebooks/2.Running/RunningCESM.ipynb
+- file: notebooks/2.Running/RunningCESM_clone.ipynb
 - file: notebooks/3.CESM2-LE/analyze-CESM2-LE.ipynb
   sections:
   - file: notebooks/3.CESM2-LE/plot_temperature.ipynb
