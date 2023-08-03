@@ -1,0 +1,657 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Running CESM (create_clone) &#8212; CESM Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/2.Running/RunningCESM-clone';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/ncar_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/ncar_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Climate Modeling Workshop
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1.Intro/introduction.html">Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1.Intro/cloud.html">Log on the cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1.Intro/jupyter-nb.html">Jupyter Notebooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="RunningCESM.html">Running CESM</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3.CESM2-LE/analyze-CESM2-LE.html">Analyze CESM2-LE</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3.CESM2-LE/plot_temperature.html">Plot Temperature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3.CESM2-LE/plot_precipitation.html">Plot Precipitation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../4.Innovator-ens/our_ensemble.html">The innovator ensemble</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../4.Innovator-ens/plot_simulation_results.html">Analyze innovator simulations</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../5.Resources/for_organizers.html">Resources for organizers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCAR/CESM-Tutorial-Innovator" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCAR/CESM-Tutorial-Innovator/issues/new?title=Issue%20on%20page%20%2Fnotebooks/2.Running/RunningCESM-clone.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/2.Running/RunningCESM-clone.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Running CESM (create_clone)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite-running-a-cell">0. Prerequisite: running a cell.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-cesm-case">1. Creating a CESM case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-case">2. Setting up the case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compiling-the-case">3. Compiling the case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-a-cesm-case">4. Customizing a CESM case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-length-of-the-run">5. Set the length of the run</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-your-case">6. Running your case</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="running-cesm-create-clone">
+<h1>Running CESM (create_clone)<a class="headerlink" href="#running-cesm-create-clone" title="Permalink to this heading">#</a></h1>
+<p>This is a brief introduction to running the climate model CESM. This will walk you through the fundamentals of running CESM. <br>
+In this notebook , we will run a simulation. Later, we will look at the data you produced.</p>
+<hr class="docutils" />
+<section id="prerequisite-running-a-cell">
+<h2>0. Prerequisite: running a cell.<a class="headerlink" href="#prerequisite-running-a-cell" title="Permalink to this heading">#</a></h2>
+<p>In this tutorial, you will often hear often the expression <strong>run a cell</strong>. In the context of a notebook, <strong>running a cell</strong> refers to executing the code written within a specific cell in the notebook.</p>
+<p><strong>Exercise 0</strong></p>
+<p>Practice running the cell below. It means <strong>click on the cell</strong> and then., press <strong><code class="docutils literal notranslate"><span class="pre">Shift-return</span></code></strong>. <br>
+Run the same cell several times. What happens?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Wait for 5 seconds&#39;</span>
+sleep<span class="w"> </span><span class="m">5</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="creating-a-cesm-case">
+<h2>1. Creating a CESM case<a class="headerlink" href="#creating-a-cesm-case" title="Permalink to this heading">#</a></h2>
+<p>CESM experiments start with creating a <strong>case</strong> with a specific configuration of CESM (<strong>compset</strong>) and at a particular <strong>resolution</strong>.</p>
+<p>For instance, here is the command to create a CESM case called <code class="docutils literal notranslate"><span class="pre">case0</span></code> with <br></p>
+<ul class="simple">
+<li><p>compset:    <code class="docutils literal notranslate"><span class="pre">B1850</span></code></p></li>
+<li><p>resolution: <code class="docutils literal notranslate"><span class="pre">f09_g17</span></code></p></li>
+</ul>
+<p><img alt="create_newcase" src="../../_images/create_newcase.png" /></p>
+<p style="text-align: center;"> Figure: Syntax of create_newcase</p><p>Due to time constraints, we will create a new case by cloning an existing case in CESM. The command is <code class="docutils literal notranslate"><span class="pre">create_clone</span></code> and the result is somewhat similar to <code class="docutils literal notranslate"><span class="pre">create_newcase</span></code>.</p>
+<p><em>If you plan to use CESM in the future, we recommend using the <code class="docutils literal notranslate"><span class="pre">create_newcase</span></code> command until you have a good understanding of CESM.</em></p>
+<p><strong>Exercise 1</strong></p>
+<p>Create a case (a simulation) using the <code class="docutils literal notranslate"><span class="pre">create_clone</span></code> command. The simulation you want to clone is located at: <code class="docutils literal notranslate"><span class="pre">/home/hannay/cases/case0</span></code>.</p>
+<p>Customize your casename (each student picks a different number) and run the cell to issue the command.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>create_clone<span class="w"> </span>--case<span class="w">  </span>~/cases/case3<span class="w"> </span>--clone<span class="w">  </span>/home/hannay/cases/case0<span class="w">  </span>--keepexe<span class="w"> </span>--cime-output-root<span class="w"> </span>/scratch/<span class="nv">$USER</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Great!  You’ve created the default version of your case. Let’s wait for everyone before going to step 2.
+<br><br></p>
+</section>
+<hr class="docutils" />
+<section id="setting-up-the-case">
+<h2>2. Setting up the case<a class="headerlink" href="#setting-up-the-case" title="Permalink to this heading">#</a></h2>
+<p>The next step in running CESM is to <strong>setup</strong> the case. This is done by going into the case you just created and running <code class="docutils literal notranslate"><span class="pre">./case.setup</span></code>.</p>
+<p>The command <code class="docutils literal notranslate"><span class="pre">./case.setup</span></code> sets up files that control the model’s behavior.</p>
+<p><strong>Exercise 2</strong></p>
+<p>Customize the cell below with your own case name. Then run the cell. This sets up the case.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/cases/case3
+./case.setup
+</pre></div>
+</div>
+</div>
+</div>
+<p><br>Great!  You’ve now used the <code class="docutils literal notranslate"><span class="pre">case.setup</span></code> command to set up your case.  Let’s wait for everyone before going to step 3.<br><br></p>
+</section>
+<hr class="docutils" />
+<section id="compiling-the-case">
+<h2>3. Compiling the case<a class="headerlink" href="#compiling-the-case" title="Permalink to this heading">#</a></h2>
+<p>CESM is written in a language called <strong>Fortran</strong>. Similar to English, Fortran is human readable. The computer doesn’t understand Fortran. It needs to be translated in a computer-readable code (strings of 0s and 1s).</p>
+<p>Here is an example of fortran code</p>
+<p><strong>Exercise 3</strong></p>
+<p>Run the cell below. This compiles the case. Be aware that this can take a few minutes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qcmd<span class="w"> </span>--<span class="w"> </span>./case.build<span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><br><br>
+Again, this will take a few minutes.  You’ll know this is complete when you see the line:</p>
+<blockquote>
+<div><p> MODEL BUILD HAS FINISHED SUCCESSFULLY</p>
+</div></blockquote>
+<p>If you see that, fantastic!  You’ve built your first CESM case!  Let’s wait for everyone before going to step 4.<br><br></p>
+</section>
+<hr class="docutils" />
+<section id="customizing-a-cesm-case">
+<h2>4. Customizing a CESM case<a class="headerlink" href="#customizing-a-cesm-case" title="Permalink to this heading">#</a></h2>
+<p><strong>Adding some butterfly effect</strong> <img alt="butterfly" src="../../_images/butterfly.png" /></p>
+<ul class="simple">
+<li><p>If we submitted the simulation now, we would all get the same results.</p></li>
+<li><p>Let’s add a small perturbation to the temperature (butterfly effect)
+<br></p></li>
+</ul>
+<p><strong>Example of a small perturbation</strong></p>
+<p>Temperature = 90F -&gt; 90.0000000000001F</p>
+<p><strong>Exercise 4</strong></p>
+<p>Run the cell below. This adds some butterfly effect (a small T temperature). <br>
+Each student adds a different butterfly effect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;pertlim = 0e-13&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>user_nl_cam
+</pre></div>
+</div>
+</div>
+</div>
+<br>
+Let's wait for everyone before going to step 5.<br><br>
+</section>
+<hr class="docutils" />
+<section id="set-the-length-of-the-run">
+<h2>5. Set the length of the run<a class="headerlink" href="#set-the-length-of-the-run" title="Permalink to this heading">#</a></h2>
+<p>By default, cesm is set to produce 5-day simulations. Here, we modify the case to do a one-month simulation.
+<br></p>
+<p><strong>Exercise 5</strong></p>
+<p>Run the following cell to change the length of the simulation to one month.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./xmlchange<span class="w"> </span><span class="nv">STOP_OPTION</span><span class="o">=</span>nmonths,STOP_N<span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Run the following cell to check the length of the simulation was properly set</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./xmlquery<span class="w"> </span>STOP_OPTION,STOP_N
+</pre></div>
+</div>
+</div>
+</div>
+<p><br><br> If you see:</p>
+<blockquote>
+<div><p>STOP_OPTION: nmonths <br>
+STOP_N: 1 <br></p>
+</div></blockquote>
+<p>Great!  You have set the case to run the model for one month.  Let’s wait for everyone before going to step 6.
+<br><br></p>
+</section>
+<hr class="docutils" />
+<section id="running-your-case">
+<h2>6. Running your case<a class="headerlink" href="#running-your-case" title="Permalink to this heading">#</a></h2>
+<p>Running a case is also simple - we just issue the <code class="docutils literal notranslate"><span class="pre">case.submit</span></code> command.  This will start by checking that we have all of the necessary input data for our run, and downloading whatever is missing, and then it will perform the actual simulation - which we’ve configured to run for one month.</p>
+<p><strong>Exercise 6</strong></p>
+<p>Submit your simulation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./case.submit
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Check the job is running</strong></p>
+<p>When you submit a simulation, it will be waiting in the computer until there is enough computer resources. <br> The command <code class="docutils literal notranslate"><span class="pre">squeue</span></code> allows you to make sure your simulation is in the queue or running.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><br><br>When this step finishes, the run will complete, then the ‘archive’ script will execute.  You will see a few warning messages about ‘No such variable’ - these are normal, and can be ignored.  The final lines should look like:</p>
+<blockquote>
+<div><p>Submitted job case.run with id None<br>
+Submitted job case.st_archive with id None</p>
+</div></blockquote>
+<p>If you see those, congratulations!  You’ve run your first case – there’s a <em>lot</em> of text shown above, and we’ll cover it in more detail in another tutorial, and more information can also be found in the <a class="reference external" href="https://escomp.github.io/CESM/versions/cesm2.2/html/quickstart.html#run-the-case">documentation</a>.<br><br></p>
+<hr class="docutils" />
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "bash"
+        },
+        kernelOptions: {
+            name: "bash",
+            path: "./notebooks/2.Running"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'bash'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite-running-a-cell">0. Prerequisite: running a cell.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-cesm-case">1. Creating a CESM case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-case">2. Setting up the case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compiling-the-case">3. Compiling the case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-a-cesm-case">4. Customizing a CESM case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-length-of-the-run">5. Set the length of the run</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-your-case">6. Running your case</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By NCAR/CGD Staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
